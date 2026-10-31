@@ -40,7 +40,9 @@ E2E tests use local `.env` credentials for admin workflows; without those values
 
 ## Production
 
-`npm run build`, configure NODE_ENV=production, DATABASE_URL and HTTPS PUBLIC_BASE_URL, provision an admin separately, then `npm start`. Production startup refuses an insecure origin or missing PostgreSQL connection. A same-origin TLS reverse proxy is required; the app listens on loopback. Do not expose the Vite development server publicly.
+`npm run build`, configure NODE_ENV=production, DATABASE_URL and HTTPS PUBLIC_BASE_URL (or Render's RENDER_EXTERNAL_URL), provision an admin separately, then `npm start`. Production startup refuses an insecure origin or missing PostgreSQL connection. A same-origin TLS reverse proxy is required; the app listens on its configured port on all interfaces in production. Do not expose the Vite development server publicly.
+
+For Render, `render.yaml` defines a Node web service and a PostgreSQL database. Connect this repository as a Render Blueprint and enter `ADMIN_BOOTSTRAP_EMAIL` and a unique `ADMIN_BOOTSTRAP_PASSWORD` of at least 16 characters in Render's private environment prompts. The account is created only while the users table is empty; remove the bootstrap password from Render's environment after the first successful login. Render provides the HTTPS URL and database connection. The free PostgreSQL plan expires after 30 days and has no backups, so export or upgrade it before a longer-lived deployment. Google sign-in remains optional and requires separate OAuth configuration.
 
 ## Submission documents
 
