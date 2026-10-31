@@ -1,0 +1,37 @@
+.landing-page{min-height:100svh;position:relative;isolation:isolate;background:var(--paper);display:flex;flex-direction:column;overflow:hidden}
+.landing-header{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;margin:0 64px;padding:32px 0;border:0;border-bottom:1px solid rgba(102,113,85,.25);background:transparent}
+.landing-login{display:inline-flex;align-items:center;gap:28px;font-size:12px;color:var(--ink);border:1px solid #9eaa8e;padding:11px 20px;border-radius:3px;background:rgba(242,239,231,.8)}
+.landing-login:hover{color:var(--blue);border-color:var(--blue)}
+.landing-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:78px 24px 86px}
+.landing-content .eyebrow{font-size:10px;letter-spacing:2.3px;color:#4b6048;margin-bottom:26px}
+.landing-content h1{font-size:clamp(55px,6.5vw,92px);line-height:1.04;letter-spacing:-4px;margin:0 0 28px;color:#282d29}
+.landing-content h1 em{font-weight:400;color:var(--blue)}
+.landing-content>p{font-size:14px;line-height:1.9;max-width:580px;margin:0 0 32px;color:#4c5746}
+.landing-actions{display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap}
+.landing-actions>.button{font-size:12px;padding:16px 23px;gap:24px}
+.landing-ask{font-size:12px;display:flex;gap:18px;align-items:center;border-bottom:1px solid #9eaa8e;padding:10px 0}
+.landing-note{font-size:10px;line-height:1.8;color:#5b6453;margin-top:29px;max-width:330px}
+.landing-footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 64px;padding:23px 0;border-top:1px solid rgba(102,113,85,.25);background:transparent;font-size:10px}
+.landing-footer>span{max-width:none;color:#5b6453}
+.landing-footer nav{display:flex;align-items:center;gap:26px;color:#515b48}
+.motion-toggle{font-size:10px;padding:0;border:0;background:transparent;color:#515b48;font-weight:400;min-height:28px}
+.motion-toggle:hover{background:transparent;color:var(--blue)}
+@media(min-width:1600px){.landing-header,.landing-footer{margin-left:max(64px,calc((100vw - 1440px)/2));margin-right:max(64px,calc((100vw - 1440px)/2))}}
+@media(max-width:700px){.landing-header{margin:0 24px;padding:23px 0}.landing-header .logo{font-size:25px}.landing-login{gap:18px;padding:10px 16px;font-size:11px}.landing-content{padding:70px 24px 78px}.landing-content .eyebrow{font-size:8px;letter-spacing:1.8px;margin-bottom:24px}.landing-content h1{font-size:clamp(47px,10vw,65px);letter-spacing:-2.5px;margin-bottom:25px}.landing-content>p{font-size:12px;max-width:340px;line-height:1.9}.landing-desktop-break{display:none}.landing-actions{flex-direction:column;gap:16px;width:100%}.landing-actions>.button{font-size:11px;padding:15px 19px;gap:22px}.landing-note{font-size:9px;max-width:245px}.landing-footer{margin:0 24px;padding:20px 0;flex-direction:column;align-items:flex-start;gap:11px;font-size:9px}.landing-footer nav{gap:24px;flex-wrap:wrap}.motion-toggle{font-size:9px}.dr-main{opacity:.8}}
+.explore-dodge{width:380px;max-width:100%;margin:-20px 0;flex-shrink:0}
+.explore-dodge .button{font-size:12px;padding:16px 23px;gap:24px;white-space:nowrap}
+.explore-dodge .dodge-field__mover:focus-within{transform:none!important}
+@media(max-width:700px){.explore-dodge{width:100%;max-width:320px;margin:-15px 0}.explore-dodge .button{font-size:11px;padding:15px 19px;gap:22px}}
+
+.landing-signin-note{font-size:11px;line-height:1.7;color:#59644f;margin-top:14px;border-bottom:1px solid #a9b29c;padding-bottom:3px}.landing-signin-note+.landing-note{margin-top:18px}@media(max-width:700px){.landing-signin-note{font-size:10px;max-width:270px}}
+
+.landing-page a:focus-visible .scroll-float-word,.landing-page a:focus-visible .scroll-float-char,.landing-page a:focus-visible .scroll-float-text{opacity:1!important;transform:none!important;filter:none!important}
+/* Keep the invitation anchored beside the playful guest option. */
+.landing-actions{gap:24px;max-width:720px;width:100%;margin-top:0}
+.signin-guidance{text-align:left;max-width:270px;border-left:1px solid #adb69e;padding:4px 0 4px 25px}
+.signin-guidance p{font-size:11px;line-height:1.85;color:#59644f;margin:0 0 13px}
+.signin-guidance .signin-guidance-title{font:22px/1.35 Georgia,serif;color:#303d2d;margin-bottom:10px}
+.signin-guidance-link{display:inline-block;font-size:11px;line-height:1.8;color:#98452f;border-bottom:1px solid #b98470;padding-bottom:4px}
+.landing-content>.landing-ask{margin-top:8px;font-size:11px}
+.landing-content>.landing-note{margin-top:18px}
+@media(max-width:700px){.landing-actions{gap:8px}.signin-guidance{max-width:290px;text-align:center;border-left:0;border-top:1px solid #adb69e;padding:21px 0 0;margin-top:0}.signin-guidance .signin-guidance-title{font-size:21px}.signin-guidance p{font-size:11px}.landing-content>.landing-ask{margin-top:26px}.landing-content{padding-bottom:48px}}

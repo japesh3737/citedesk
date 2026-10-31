@@ -1,0 +1,11 @@
+node_modules/
+dist/
+data/
+.env
+.env.*
+!.env.example
+test-results/
+playwright-report/
+data-e2e/
+docs/video-review/*.jpg
+docs/video-review/*.png

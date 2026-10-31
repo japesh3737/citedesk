@@ -1,0 +1,59 @@
+{
+  "name": "citedesk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch server/index.ts",
+    "start": "tsx server/index.ts",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "db:seed": "tsx server/seed.ts",
+    "audit": "npm audit",
+    "admin:google": "tsx server/provision-google.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.3.14",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "google-auth-library": "^11.3.2",
+    "gsap": "^3.15.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^0.468.0",
+    "motion": "^14.9.0",
+    "pg": "^8.16.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.9.5",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@playwright/test": "^1.56.1",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.6",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/supertest": "^6.0.3",
+    "@vitejs/plugin-react": "^5.1.0",
+    "eslint": "^9.39.0",
+    "supertest": "^7.1.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2",
+    "vite": "^7.1.12",
+    "vitest": "^5.0.5"
+  },
+  "overrides": {
+    "minimatch": "^11.0.1"
+  }
+}

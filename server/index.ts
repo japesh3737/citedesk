@@ -1,0 +1,11 @@
+import 'dotenv/config';
+import {seed} from './seed.js';
+import {query} from './db.js';
+import {createApp} from './app.js';
+import express from 'express';
+import path from 'node:path';
+if(process.env.NODE_ENV==='production'&&(!process.env.DATABASE_URL||!process.env.PUBLIC_BASE_URL?.startsWith('https://')))throw Error('Production requires PostgreSQL DATABASE_URL and HTTPS PUBLIC_BASE_URL');
+await seed();
+const days=Number(process.env.QUESTION_RETENTION_DAYS||14);if(!Number.isInteger(days)||days<1||days>90)throw Error('Retention must be 1–90 days');
+const cleanup=()=>query("DELETE FROM questions WHERE created_at < now() - ($1 * interval '1 day')",[days]);await cleanup();setInterval(()=>void cleanup().catch(()=>console.error('Retention cleanup failed')),3600000).unref();
+const app=createApp();if(process.env.NODE_ENV==='production'){app.use(express.static('dist'));app.get('/{*path}',(_req,res)=>res.sendFile(path.resolve('dist/index.html')));}else{const {createServer}=await import('vite');const vite=await createServer({server:{middlewareMode:true,hmr:{port:Number(process.env.PORT||4000)+20000}},appType:'spa'});app.use(vite.middlewares);}app.listen(Number(process.env.PORT||4000),'127.0.0.1',()=>console.log('CiteDesk ready at http://localhost:4000'));

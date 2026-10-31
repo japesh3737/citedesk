@@ -1,0 +1,13 @@
+# Architecture and implementation decisions
+
+Browser → same-origin Express → validation/origin controls → public or session-protected routes → parameterized PostgreSQL queries. Public React content is rendered as escaped text or react-markdown without raw HTML. Frontend build contains no credentials.
+
+Persistence: users, sessions, articles, questions, answers, answer_sources, feedback and audit. Products/categories are bounded strings rather than normalized tables; article sections are derived from the current Markdown on every retrieval. PostgreSQL GIN full-text index supports public keyword search. Embedded PGlite is the zero-setup local PostgreSQL runtime; DATABASE_URL switches to node-postgres. See https://pglite.dev/docs/ for persistence and query APIs.
+
+Chat: validate → direct-secret/unsupported-intent checks → fetch currently published articles → normalized title/tag coverage → reject weak/ambiguous matches → reject instruction-like source content → extract current Steps section → persist answer/evidence version → return citation data. Citations are built by the UI from validated database slugs and section anchors. No model tools, network browsing or arbitrary code execution exist. This intentionally ships the optional paid provider as absent.
+
+Each article update is a single atomic UPDATE of body, metadata, version and visibility. Derived sections prevent stale chunk indexes. Audit insertion is separate; a failed audit can leave a successful article mutation. Multi-table transaction hardening and versioned migrations are residual work. Historical sources record the version but old answer URLs can point to a newer version; their version label enables comparison, without a dedicated source-updated banner.
+
+Sessions: random 256-bit opaque cookie, SHA-256 token digest at rest, PostgreSQL expiry, bcrypt cost 12 password hash, server ADMIN role check. Local admin provisioned only from untracked environment and never auto-provisioned in production. Feedback cookie lasts one day; session lasts eight hours. Questions cascade-delete answers, citations and feedback after configured retention. Session cleanup is checked at lookup, though expired session rows are not periodically pruned yet.
+
+Original specifications are preserved unchanged. Departures from their default stack and missing scope are explicit in README. The UI/API boundary currently uses TypeScript and Zod request validation, but API response typing and route/service separation should be strengthened for long-term maintenance.

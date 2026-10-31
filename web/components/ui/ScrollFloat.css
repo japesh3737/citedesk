@@ -1,0 +1,44 @@
+.scroll-float {
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.scroll-float--open {
+  overflow: visible;
+  overflow-x: clip;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: clamp(1.6rem, 8vw, 10rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.scroll-float-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.scroll-float-char {
+  display: inline-block;
+}
+
+.scroll-float-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* Inherit the landing page typography; structural headings remain in the caller. */
+.scroll-float{display:inline-block;margin:0;vertical-align:baseline;max-width:100%;overflow:visible}
+.scroll-float-text{font:inherit;letter-spacing:inherit;line-height:inherit;text-align:inherit;max-width:100%}
+.scroll-float-word,.scroll-float-char{font:inherit;letter-spacing:inherit}
