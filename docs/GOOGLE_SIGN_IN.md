@@ -19,7 +19,7 @@ For several administrators, use a comma-separated allowlist. Each must be a Gmai
 4. Stop the running application before accessing the embedded database from another process. Run `npm run admin:google` to explicitly provision the allowlisted accounts. This command creates only missing accounts with random, unexposed password hashes; it does not change existing roles or passwords. An existing non-admin cannot be promoted by Google sign-in.
 5. Run `npm start`. Open `/admin/login` and choose **Continue with Google**. Login from the landing page opens the same sign-in screen.
 
-For deployment, use an HTTPS PUBLIC_BASE_URL and register the matching `/api/auth/google/callback` redirect. No arbitrary redirect URL is accepted from a request. The client secret stays server-side. No API access scopes, offline access or refresh tokens are requested.
+For deployment on Render, add `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` and `GOOGLE_ADMIN_EMAILS` as private environment variables on the CiteDesk web service. Register the exact redirect URI `https://citedesk.onrender.com/api/auth/google/callback` in the Google Cloud OAuth web client. Render's HTTPS `RENDER_EXTERNAL_URL` is used automatically when PUBLIC_BASE_URL is not set. On startup, each explicitly allowlisted email is provisioned as an administrator if no account with that email exists. Existing account roles and passwords are preserved. No arbitrary redirect URL is accepted from a request. The client secret stays server-side. No API access scopes, offline access or refresh tokens are requested.
 
 ## Flow and access boundaries
 
